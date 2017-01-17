@@ -14,6 +14,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var tasks: [TaskTimeFrame] = []
     
+    var selectedIndex = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -46,6 +48,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = indexPath.row
+        let task = tasks[indexPath.row]
+        performSegue(withIdentifier: SEGUE_SELECT, sender: task)
+    }
+    
     func createTasks() -> [TaskTimeFrame] {
         let task1 = TaskTimeFrame()
         task1.name = "Walk"
@@ -69,9 +77,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: SEGUE_ADD, sender: nil)
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let nextVC = segue.destination as! CreateTaskViewController
-        nextVC.previousVC = self // for getting back data
+        
+        if segue.identifier == SEGUE_ADD {
+            let nextVC = segue.destination as! CreateTaskViewController
+            nextVC.previousVC = self // for getting back data
+        }
+        
+        if segue.identifier == SEGUE_SELECT {
+            let nextVC = segue.destination as! DisplayTaskViewController
+            nextVC.task = sender as! TaskTimeFrame
+            nextVC.previousVC = self
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
