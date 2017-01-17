@@ -24,6 +24,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(true)
+        
+        getTasks()
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -57,6 +63,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func getTasks() {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        do {
+            tasks = try context.fetch(TaskTimeFrame.fetchRequest()) as! [TaskTimeFrame]
+            print(tasks)
+        } catch {
+            print("We have Error")
+        }
         
     }
     
