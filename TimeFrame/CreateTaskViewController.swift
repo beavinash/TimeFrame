@@ -34,6 +34,12 @@ class CreateTaskViewController: UIViewController {
     }
     
     @IBAction func addTapped(_ sender: Any) {
+        
+        // Check Data
+        if (!checkInput()) {
+            return
+        }
+        
         // Create a Task using Time Frame with outlets
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let task = TaskTimeFrame(context: context)
@@ -48,6 +54,28 @@ class CreateTaskViewController: UIViewController {
 //        previousVC.tableView.reloadData()
         
         navigationController!.popViewController(animated: true) // pop back
+    }
+    
+    func checkInput() -> Bool {
+        // Task Name Check
+        if ((taskNameTextField.text?.characters.count)! < 3) {
+            taskNameTextField.backgroundColor = UIColor.init(red: 0.8, green: 0.0, blue: 0.0, alpha: 0.2)
+            Utilities().ShowAlert(title: "Error!", message: "The Name entered should be more than 2 Characters", vc: self)
+            return false
+        } else {
+            taskNameTextField.backgroundColor = UIColor.white
+        }
+        
+        // Time Frame Check
+        if ((timeFrameTextField.text?.characters.count)! <= 18) {
+            timeFrameTextField.backgroundColor = UIColor.init(red: 0.8, green: 0.0, blue: 0.0, alpha: 0.2)
+            Utilities().ShowAlert(title: "Error!", message: "The Time Frame entered should be in exact Format", vc: self)
+            return false
+        } else {
+            timeFrameTextField.backgroundColor = UIColor.white
+        }
+        
+        return true
     }
 
     /*

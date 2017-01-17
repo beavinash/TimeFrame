@@ -68,9 +68,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         do {
             tasks = try context.fetch(TaskTimeFrame.fetchRequest()) as! [TaskTimeFrame]
-            print(tasks)
+            // print(tasks)
         } catch {
             print("We have Error")
+            Utilities().ShowAlert(title: "Error!", message: "Core Data Error! Please Try Again!", vc: self)
         }
         
     }
