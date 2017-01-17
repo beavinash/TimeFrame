@@ -14,7 +14,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var tasks: [TaskTimeFrame] = []
     
-    var selectedIndex = 0
+    // var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +28,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        super.viewWillAppear(true)
         
         getTasks()
+        tableView.reloadData()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -44,16 +45,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let task = tasks[indexPath.row]
         
         if task.important {
-            cell.textLabel?.text = "❗️\(task.name)"
+            cell.textLabel?.text = "❗️\(task.name!)"
         } else {
-            cell.textLabel?.text = task.name
+            cell.textLabel?.text = task.name!
         }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedIndex = indexPath.row
+        // selectedIndex = indexPath.row
         let task = tasks[indexPath.row]
         performSegue(withIdentifier: SEGUE_SELECT, sender: task)
     }
@@ -79,7 +80,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if segue.identifier == SEGUE_SELECT {
             let nextVC = segue.destination as! DisplayTaskViewController
-            nextVC.task = sender as! TaskTimeFrame
+            nextVC.task = sender as? TaskTimeFrame
             // nextVC.previousVC = self
         }
         
