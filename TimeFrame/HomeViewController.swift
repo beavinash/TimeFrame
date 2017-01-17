@@ -43,8 +43,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.textLabel?.text = task.name
         }
         
-        
-        
         return cell
     }
     
@@ -67,6 +65,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return [task1, task2, task3]
     }
 
+    @IBAction func addTapped(_ sender: Any) {
+        performSegue(withIdentifier: SEGUE_ADD, sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextVC = segue.destination as! CreateTaskViewController
+        nextVC.previousVC = self // for getting back data
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

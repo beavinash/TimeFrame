@@ -20,6 +20,7 @@
 		E19665EA1E2E7E28003D1DA3 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19665E91E2E7E28003D1DA3 /* CustomTextField.swift */; };
 		E19665EC1E2E7E4C003D1DA3 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19665EB1E2E7E4C003D1DA3 /* CustomView.swift */; };
 		E19665EE1E2E8462003D1DA3 /* TaskTimeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19665ED1E2E8462003D1DA3 /* TaskTimeFrame.swift */; };
+		E19665F01E2E9521003D1DA3 /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19665EF1E2E9521003D1DA3 /* CreateTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		E19665E91E2E7E28003D1DA3 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		E19665EB1E2E7E4C003D1DA3 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		E19665ED1E2E8462003D1DA3 /* TaskTimeFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTimeFrame.swift; sourceTree = "<group>"; };
+		E19665EF1E2E9521003D1DA3 /* CreateTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				E19665CA1E2E7C01003D1DA3 /* HomeViewController.swift */,
+				E19665EF1E2E9521003D1DA3 /* CreateTaskViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 			files = (
 				E19665CB1E2E7C01003D1DA3 /* HomeViewController.swift in Sources */,
 				E19665EE1E2E8462003D1DA3 /* TaskTimeFrame.swift in Sources */,
+				E19665F01E2E9521003D1DA3 /* CreateTaskViewController.swift in Sources */,
 				E19665D11E2E7C01003D1DA3 /* TimeFrame.xcdatamodeld in Sources */,
 				E19665C91E2E7C01003D1DA3 /* AppDelegate.swift in Sources */,
 				E19665EC1E2E7E4C003D1DA3 /* CustomView.swift in Sources */,
@@ -364,6 +368,7 @@
 				E19665DC1E2E7C01003D1DA3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -12,6 +12,8 @@ import UIKit
 
 let SHADOW_GRAY: CGFloat = 120.0 / 255.0
 
+let SEGUE_ADD = "addSegue"
+
 class Utilities {
     
     func ShowAlert (title: String, message: String, vc: UIViewController) {
