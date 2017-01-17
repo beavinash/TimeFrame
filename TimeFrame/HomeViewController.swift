@@ -20,8 +20,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        tasks = createTasks()
-        
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -53,42 +51,22 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let task = tasks[indexPath.row]
         performSegue(withIdentifier: SEGUE_SELECT, sender: task)
     }
-    
-    func createTasks() -> [TaskTimeFrame] {
-        let task1 = TaskTimeFrame()
-        task1.name = "Walk"
-        task1.timeFrame = "2AM"
-        task1.important = false
-        
-        let task2 = TaskTimeFrame()
-        task2.name = "Talk"
-        task2.timeFrame = "3AM"
-        task2.important = true
-        
-        let task3 = TaskTimeFrame()
-        task3.name = "Walk the Talk"
-        task3.timeFrame = "4AM"
-        task3.important = false
-        
-        return [task1, task2, task3]
-    }
 
     @IBAction func addTapped(_ sender: Any) {
         performSegue(withIdentifier: SEGUE_ADD, sender: nil)
     }
     
+    func getTasks() {
+        
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == SEGUE_ADD {
-            let nextVC = segue.destination as! CreateTaskViewController
-            nextVC.previousVC = self // for getting back data
-        }
         
         if segue.identifier == SEGUE_SELECT {
             let nextVC = segue.destination as! DisplayTaskViewController
             nextVC.task = sender as! TaskTimeFrame
-            nextVC.previousVC = self
+            // nextVC.previousVC = self
         }
         
     }

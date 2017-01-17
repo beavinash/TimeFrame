@@ -14,9 +14,6 @@ class CreateTaskViewController: UIViewController {
     @IBOutlet weak var timeFrameTextField: UITextField!
     @IBOutlet weak var importantSwitch: UISwitch!
     
-    // For sending the data
-    var previousVC = HomeViewController()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,16 +27,19 @@ class CreateTaskViewController: UIViewController {
     
     @IBAction func addTapped(_ sender: Any) {
         // Create a Task using Time Frame with outlets
-        let task = TaskTimeFrame()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let task = TaskTimeFrame(context: context)
         task.name = taskNameTextField.text!
         task.timeFrame = timeFrameTextField.text!
         task.important = importantSwitch.isOn
         
-        // Add data to array and send back data to HomeViewController
-        previousVC.tasks.append(task)
-        previousVC.tableView.reloadData()
+        (UIApplication.shared.delegate as! AppDelegate).saveContext() // for saving above object
         
-        navigationController!.popViewController(animated: true)
+        // Add data to array and send back data to HomeViewController
+//        previousVC.tasks.append(task)
+//        previousVC.tableView.reloadData()
+        
+        navigationController!.popViewController(animated: true) // pop back
     }
 
     /*
