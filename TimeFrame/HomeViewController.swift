@@ -48,7 +48,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = UITableViewCell()
         
         if tasks.count == 0 {
-            cell.textLabel?.text = "Hey, there are no snaps for now"
+            cell.textLabel?.text = "Hey, there are no Time Frames for now"
         } else {
             
             let task = tasks[indexPath.row]
