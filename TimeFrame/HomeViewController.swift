@@ -48,7 +48,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = UITableViewCell()
         
         if tasks.count == 0 {
-            cell.textLabel?.text = "Hey, there are no Time Frames for now"
+            cell.textLabel?.text = "There are no Time Frames"
         } else {
             
             let task = tasks[indexPath.row]
@@ -68,8 +68,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // selectedIndex = indexPath.row
-        let task = tasks[indexPath.row]
-        performSegue(withIdentifier: SEGUE_SELECT, sender: task)
+        
+        if tasks.count == 0 {
+            return
+        } else {
+            
+            let task = tasks[indexPath.row]
+            performSegue(withIdentifier: SEGUE_SELECT, sender: task)
+            
+        }
+        
     }
 
     @IBAction func addTapped(_ sender: Any) {
