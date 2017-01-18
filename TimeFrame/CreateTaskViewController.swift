@@ -67,7 +67,7 @@ class CreateTaskViewController: UIViewController {
         }
         
         // Time Frame Check
-        if ((timeFrameTextField.text?.characters.count)! <= 18) {
+        if ((timeFrameTextField.text?.characters.count)! < 18) {
             timeFrameTextField.backgroundColor = UIColor.init(red: 0.8, green: 0.0, blue: 0.0, alpha: 0.2)
             Utilities().ShowAlert(title: "Error!", message: "The Time Frame entered should be in exact Format", vc: self)
             return false

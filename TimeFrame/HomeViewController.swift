@@ -36,19 +36,32 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
+        
+        if tasks.count == 0 {
+            return 1
+        } else {
+            return tasks.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         
-        let task = tasks[indexPath.row]
-        
-        if task.important {
-            cell.textLabel?.text = "❗️\(task.name!)"
+        if tasks.count == 0 {
+            cell.textLabel?.text = "Hey, there are no snaps for now"
         } else {
-            cell.textLabel?.text = task.name!
+            
+            let task = tasks[indexPath.row]
+            
+            if task.important {
+                cell.textLabel?.text = "❗️\(task.name!)"
+            } else {
+                cell.textLabel?.text = task.name!
+            }
+            
         }
+        
+        
         
         return cell
     }
