@@ -45,18 +45,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: SEGUE_SELECT)! as UITableViewCell
         
         if tasks.count == 0 {
             cell.textLabel?.text = "There are no Time Frames"
+            cell.detailTextLabel?.text = ""
         } else {
             
             let task = tasks[indexPath.row]
             
             if task.important {
                 cell.textLabel?.text = "❗️\(task.name!)"
+                cell.detailTextLabel?.text = task.timeFrame!
             } else {
                 cell.textLabel?.text = task.name!
+                cell.detailTextLabel?.text = task.timeFrame!
             }
             
         }
